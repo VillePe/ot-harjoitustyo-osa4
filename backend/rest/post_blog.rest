@@ -1,0 +1,11 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZpcHBlcCIsIl9pZCI6IjVkNDZlNjdhMjU1ODAzNWVlODQ3NWQwZCIsImlhdCI6MTU2NDkyODIwNH0.TI1IkBHeG1ghIV32dndbpkPUyB65IdPvju_pDXeoSKw
+
+{
+    "title": "Testiblogi2",
+    "author": "Ville P.",
+    "url": "http://www.villepekkala.net/koiravahti.html",
+    "likes": 1001,
+    "userId": "5d46e67a2558035ee8475d0d"
+}
