@@ -6,7 +6,7 @@ const logger = require("../utils/logger");
 
 router.get("/", async (req, res, next) => {
     User.find({})
-        .populate({ path: "blogs", model: Blog, select:{title: 1, url:1, likes:1}})
+        .populate({ path: "blogs", model: Blog, select: { title: 1, url: 1, likes: 1 } })
         .then(users => {
             if (users) {
                 logger.info(users)
@@ -19,6 +19,20 @@ router.get("/", async (req, res, next) => {
             logger.error("404 users not found");
             next(error);
         });
+})
+
+router.get("/:_id", async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params._id).populate("blogs")
+        if (user) {
+            res.json(user.toJSON());
+        } else {
+            res.status(404).json({error: "No users found with given id"})
+        }
+    } catch (error) {
+        next(error)
+    }
+
 })
 
 router.post("/", async (req, res, next) => {

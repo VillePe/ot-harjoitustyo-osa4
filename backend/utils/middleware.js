@@ -6,6 +6,8 @@ const errorHandler = (error, req, res, next) => {
         return res.status(400).json({error: "Username already in the database"})
     } else if (error.name === "JsonWebTokenError") {
         return res.status(401).json({error:"Invalid token"});
+    } else if (error.name === "ValidationError") {
+        return res.status(401).json({error:`Validation error ${error.message}`})
     }
 
     next(error);
