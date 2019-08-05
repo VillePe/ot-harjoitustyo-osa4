@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import blogService from '../services/blogs'
 
-const BlogAdder = ({user, setBlogs, setUser}) => {
+const BlogAdder = ({user, blogs, setBlogs, setUser}) => {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState(user.name);
     const [url, setUrl] = useState("http://www.");
 
     const onSubmit = async (event) => {
-        console.log("TADAA")
         event.preventDefault();
         const newBlog = {
             title: title,
@@ -18,7 +17,7 @@ const BlogAdder = ({user, setBlogs, setUser}) => {
         console.log("Adding blog...", user, newBlog)
         const resultBlog = await blogService.addBlog(newBlog, user.token);
         console.log("Result blog:", resultBlog);
-        setBlogs(resultBlog);
+        setBlogs(blogs.concat(resultBlog));
     }
     const style = {
         width: 500

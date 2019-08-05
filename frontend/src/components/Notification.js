@@ -1,12 +1,15 @@
 import React from 'react'
 
 const Notification = (props) => {
-    if (props.message === undefined ||props.message.length === 0) {
-        return (<div></div>)
-    }
+    const notification = props.notification;
+    if (notification === null || notification.message === undefined ||notification.message.length === 0) {
+        return null;
+    }    
+    const notifClass = notification.class === undefined ? "error" : notification.class;
+    
     return (
-        <div class="error">
-            {props.message}
+        <div class={notifClass}>
+            {notification.message}
         </div>
     )
 }

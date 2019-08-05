@@ -12,16 +12,21 @@ router.post("/", async (req, res, next) => {
         ? false
         : await bcrypt.compare(body.password, user.passwordHash);
     if (!(user && passwordCorrect)) {
-        return res.status(401).json({error:"Invalid username or password"});
+        return res.status(401).json({ error: "Invalid username or password" });
     }
     const userForToken = {
         username: user.username,
         _id: user._id
     };
 
-    const token = jwt.sign(userForToken, process.env.SECRET);
+    try {
 
-    res.status(200).send({token:`bearer ${token}`, username:user.username, name:user.name, _id: user._id});
+        const token = jwt.sign(userForToken, process.env.SECRET);
+
+        res.status(200).send({ token: `bearer ${token}`, username: user.username, name: user.name, _id: user._id });
+    } catch (error) {
+        next(error);
+    }
 
 });
 

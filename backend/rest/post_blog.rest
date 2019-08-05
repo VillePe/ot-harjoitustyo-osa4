@@ -1,11 +1,62 @@
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZpcHBlcCIsIl9pZCI6IjVkNDZlNjdhMjU1ODAzNWVlODQ3NWQwZCIsImlhdCI6MTU2NDkyODIwNH0.TI1IkBHeG1ghIV32dndbpkPUyB65IdPvju_pDXeoSKw
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZpcHBlcCIsIl9pZCI6IjVkNDdkOThlMzM0YzI4MjhkOGJlYTVjZiIsImlhdCI6MTU2NDk5MDg1M30.ES4rvm71fGyBHHxlMNhF_t9wbyRCgg6GO2ly4sMS7As
 
 {
-    "title": "Testiblogi2",
+    "title": "Testiblogi1",
     "author": "Ville P.",
-    "url": "http://www.villepekkala.net/koiravahti.html",
-    "likes": 1001,
-    "userId": "5d46e67a2558035ee8475d0d"
+    "url": "http://www.villepekkala.net/",
+    "likes": 1002,
+    "userId": "5d47d98e334c2828d8bea5cf"
+}
+###
+
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZpcHBlcCIsIl9pZCI6IjVkNDdkOThlMzM0YzI4MjhkOGJlYTVjZiIsImlhdCI6MTU2NDk5MDg1M30.ES4rvm71fGyBHHxlMNhF_t9wbyRCgg6GO2ly4sMS7As
+
+{
+    "title": "Testiblogi1",
+    "author": "Ville P.",
+    "url": "http://www.villepekkala.net/",
+    "likes": 1002,
+    "userId": "5d47d98e334c2828d8bea5cf"
+}
+###
+
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkRpamtzdHJhIiwiX2lkIjoiNWQ0N2Q5YjczMzRjMjgyOGQ4YmVhNWQwIiwiaWF0IjoxNTY0OTkxNDc0fQ.21TYABkSemj61bSSxzle57DdA6Gm71FvEEppiAjjXiM
+
+{
+    "title": "SUBSTITUTION PROCESSES",
+    "author": "Edsger W. Dijkstra",
+    "url": "https://www.cs.utexas.edu/users/EWD/transcriptions/EWD00xx/EWD28.html",
+    "likes": 1002,
+    "userId": "5d47d9b7334c2828d8bea5d0"
+}
+###
+
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkRpamtzdHJhIiwiX2lkIjoiNWQ0N2Q5YjczMzRjMjgyOGQ4YmVhNWQwIiwiaWF0IjoxNTY0OTkxNDc0fQ.21TYABkSemj61bSSxzle57DdA6Gm71FvEEppiAjjXiM
+
+{
+    "title": "SUBSTITUTION PROCESSES",
+    "author": "Edsger W. Dijkstra",
+    "url": "https://www.cs.utexas.edu/users/EWD/transcriptions/EWD00xx/EWD28.html",
+    "likes": 1002,
+    "userId": "5d47d9b7334c2828d8bea5d0"
+}
+###
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkRpamtzdHJhIiwiX2lkIjoiNWQ0N2Q5YjczMzRjMjgyOGQ4YmVhNWQwIiwiaWF0IjoxNTY0OTkxNDc0fQ.21TYABkSemj61bSSxzle57DdA6Gm71FvEEppiAjjXiM
+
+{
+    "title": "SUBSTITUTION PROCESSES",
+    "author": "Edsger W. Dijkstra",
+    "url": "https://www.cs.utexas.edu/users/EWD/transcriptions/EWD00xx/EWD28.html",
+    "likes": 1002,
+    "userId": "5d47d9b7334c2828d8bea5d0"
 }

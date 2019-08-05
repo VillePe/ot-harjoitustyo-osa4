@@ -50,7 +50,8 @@ router.post("/", async (req, res, next) => {
         const newBlogItem = await blogItem.save();
         user.blogs = user.blogs.concat(newBlogItem._id);
         await user.save();
-        res.status(204).json(newBlogItem.toJSON());
+        logger.info("New blog item: ",newBlogItem);
+        res.json(newBlogItem);
     } catch (error) {
         logger.error("Error while posting a blog")
         next(error);

@@ -17,7 +17,7 @@ const Login = ({setUser, setBlogs, setError}) => {
           console.log("Blogs set!");
           window.localStorage.setItem("loggedUser", JSON.stringify(user));
         } catch (error) {
-          setError(error.message);
+          setError({message:error.message});
           setTimeout(() => {
             setError("");
           }, 3000)
