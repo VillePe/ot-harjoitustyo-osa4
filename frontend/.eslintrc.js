@@ -12,23 +12,33 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react", "jest"],
+        "react", "jest","react-hooks"],
     "rules": {
         "indent": [
-            "error",
-            2],
+            "warn",
+            4
+        ],
         "linebreak-style": [
-            "error",
-            "unix"
+            "warn",
+            "windows"
         ],
         "quotes": [
-            "error",
-            "single"
+            "warn",
+            "double"
         ],
         "semi": [
-            "error",
-            "never"
+            "warn",
+            "always"
         ],
-        "eqeqeq": "error", "no-trailing-spaces": "error", "object-curly-spacing": ["error", "always"], "arrow-spacing": ["error", { "before": true, "after": true }], "no-console": 0, "react/prop-types": 0
+        "eqeqeq": "error", "no-trailing-spaces": "error",
+        "object-curly-spacing": ["warn", "never"],
+        "arrow-spacing": ["error", { "before": true, "after": true }],
+        "no-console": 0,
+        "react/prop-types": 0,
+        "no-unused-vars": [
+            "warn"
+        ],
+        "no-trailing-spaces": ["warn"],
+        "react-hooks/rules-of-hooks": "error",
     }
 };
