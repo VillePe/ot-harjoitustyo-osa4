@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import blogService from "../services/blogs";
-import TogglableText from "./TogglableText";
+import { Button } from 'semantic-ui-react'
 
 const Blog = ({ user, pBlog }) => {
     const [blog, setBlog] = useState(pBlog);
@@ -40,10 +40,19 @@ const Blog = ({ user, pBlog }) => {
         if (blog === null) return null;
         return (
             <div className="blog">
-                <h1 onClick={toggleVisibility}>{blog.title} - {blog.author}<button style={buttonStyle} id={blog._id} onClick={deleteBlog}>Poista</button></h1>
+                <h1 style={{ cursor: "pointer" }} onClick={toggleVisibility}>{blog.title} - {blog.author}<Button style={buttonStyle} id={blog._id} onClick={deleteBlog}>Poista</Button></h1>
                 <div style={showWhenVisible}>
                     <a href={blog.url}>{blog.url}</a>
-                    <div>Likes: {blog.likes.toString()} <button onClick={addLike}>like</button></div>
+                    <div>
+                        <Button
+                            color="red"
+                            icon="heart"
+                            content="like"
+                            label={{ basic: true, color: 'red', pointing: 'left', content: blog.likes.toString() }}
+                            onClick={addLike}
+                        >
+                       </Button>
+                    </div>
                 </div>
             </div>
         );

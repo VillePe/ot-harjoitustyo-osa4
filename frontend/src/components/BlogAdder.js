@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import blogService from "../services/blogs";
+import {init, clear, logoutUser} from "../reducers/mainReducer"
+import { Button } from "semantic-ui-react";
 
-const BlogAdder = ({user, blogs, setBlogs, setUser}) => {
+const BlogAdder = ({store}) => {
     const [title, setTitle] = useState("");
-    const [author, setAuthor] = useState(user.name);
+    const [author, setAuthor] = useState(store.getState().user.name);
     const [url, setUrl] = useState("http://www.");
 
     const onSubmit = async (event) => {
@@ -14,10 +16,12 @@ const BlogAdder = ({user, blogs, setBlogs, setUser}) => {
             url: url,
             likes: 0
         };
+        const user = store.getState().user;
         console.log("Adding blog...", user, newBlog);
         const resultBlog = await blogService.addBlog(newBlog, user.token);
         console.log("Result blog:", resultBlog);
-        setBlogs(blogs.concat(resultBlog));
+        const blogs = store.getState().blogs;
+        store.dispatch(init(blogs.concat(resultBlog)));
     };
     const style = {
         width: 500
@@ -25,8 +29,8 @@ const BlogAdder = ({user, blogs, setBlogs, setUser}) => {
 
     const logOut = () => {
         window.localStorage.removeItem("loggedUser");
-        setUser(null);
-        setBlogs([]);
+        store.dispatch(logoutUser());
+        store.dispatch(clear());
     };
 
     return (
@@ -48,8 +52,8 @@ const BlogAdder = ({user, blogs, setBlogs, setUser}) => {
                     </tr>
                 </tbody>
             </table>
-            <button type="submit">Add</button>
-            <button type="button" onClick={logOut}>Log out</button>
+            <Button style={{margin:"2px"}} type="submit">Add</Button>
+            <Button style={{margin:"2px"}} type="button" onClick={logOut}>Log out</Button>
         </form>
     );
 };

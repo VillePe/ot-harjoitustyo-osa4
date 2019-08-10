@@ -16,7 +16,8 @@ module.exports = {
     "rules": {
         "indent": [
             "warn",
-            4
+            4,
+            {"SwitchCase": 1}
         ],
         "linebreak-style": [
             "warn",
@@ -26,11 +27,7 @@ module.exports = {
             "warn",
             "double"
         ],
-        "semi": [
-            "warn",
-            "always"
-        ],
-        "eqeqeq": "error", "no-trailing-spaces": "error",
+        "eqeqeq": "error",
         "object-curly-spacing": ["warn", "never"],
         "arrow-spacing": ["error", { "before": true, "after": true }],
         "no-console": 0,

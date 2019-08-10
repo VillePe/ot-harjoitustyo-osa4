@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import loginService from "../services/login";
 import blogService from "../services/blogs";
-import {useField} from '../hooks'
+import { useField } from '../hooks'
+import { init, setUser } from '../reducers/mainReducer'
+import { Button } from "semantic-ui-react";
 
-const Login = ({ setUser, setBlogs, setError }) => {
+const Login = ({ store, setError }) => {
     const username = useField("text", "Vippep");
     const password = useField("password", "RaStat");
 
@@ -11,10 +13,13 @@ const Login = ({ setUser, setBlogs, setError }) => {
         event.preventDefault();
         console.log(`Logging in as ${username.value}`);
         try {
-            const user = await loginService.login({ username: username.value, password: password.value });
-            await setUser(user);
+            const user = await loginService.login({ username: username.value, password: password.value });            
+            store.dispatch(setUser(user))
             console.log("USER:", user);
-            await setBlogs(await blogService.getBlogs(user));
+            (async () => {
+                const tempBlogs = await blogService.getBlogs(user);
+                store.dispatch(init(tempBlogs));
+            })();
             console.log("Blogs set!");
             window.localStorage.setItem("loggedUser", JSON.stringify(user));
         } catch (error) {
@@ -39,7 +44,7 @@ const Login = ({ setUser, setBlogs, setError }) => {
                     </tr>
                 </tbody>
             </table>
-            <button type="submit">Login</button>
+            <Button style={{margin:"2px"}} primary type="submit">Login</Button>
         </form>
     );
 };
